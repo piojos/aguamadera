@@ -1,0 +1,147 @@
+/*
+	Theme Name: Aguamadera
+	Theme URI: http://www.xinu.mx
+	Description: WordPress Theme for Xinú.
+	Version: 2.0.0
+	Author: Daniel Miranda (@piojos)
+	Author URI: http://www.raidho.mx
+	Tags: Blank, HTML5, CSS3
+*/
+
+
+
+/* Fonts & Basic */
+
+	@font-face {
+		font-family: Sentinel;
+		src: url(assets/Sentinel-Light.otf);
+	}
+	@font-face {
+		font-family: Sentinel;
+		src: url(assets/Sentinel-LightItalic.otf);
+		font-style: italic;
+	}
+	@font-face {
+		font-family: Gotham;
+		src: url(assets/Gotham-Medium.otf);
+	}
+
+	body {
+		margin: 0;
+		font-family: Sentinel, serif;
+		font-size: 16px;
+		color: #000;
+		background: #F5F1E6;
+		/*text-shadow: -2px 2px 8px rgba(0, 0, 0, 0.25);*/
+		text-align: center;
+	}
+	a {
+		/*color: white;*/
+		text-decoration: none;
+		cursor: pointer;
+	}
+	hr {
+		border: none;
+		border-top: 1px solid;
+		width: 6em;
+		margin: 2em auto;
+		position: relative;
+	}
+	ul {
+		padding: 0;
+	}
+	li {
+		display: inline-block;
+	}
+	.content li:before {
+		content: '• ';
+	}
+	.hide,
+	.content,
+	.back {
+		display: none;
+	}
+
+
+
+
+
+/* Header */
+
+	header {
+		position: relative;
+		max-width: 80em;
+		margin: 2em auto;
+		font-family: "Gotham", sans-serif;
+	}
+	header > .lang {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.menu_btn {
+		border-top: 2px solid;
+		border-bottom: 2px solid;
+		width: 2em;
+		position: absolute;
+	}
+	.menu_btn:after {
+		content: '';
+		display: block;
+		border-bottom: 2px solid;
+		margin: .5em 0;
+	}
+
+	.lang > .lang {
+		margin-left: .65em;
+		border-left: 1px solid;
+		padding-left: .75em;
+	}
+	.lang img {
+		vertical-align: top;
+	}
+
+	nav {
+		position: absolute;
+		top: 3em;
+		line-height: 2em;
+	}
+	nav a {
+		display: block;
+		text-align: left;
+		color: black;
+	}
+	nav a.current {
+		opacity: .25;
+	}
+	nav a:hover {
+		opacity: .5;
+	}
+
+
+
+/* Products */
+
+	.products > div {
+		width: 20em;
+		display: inline-block;
+		margin: 0 1em;
+	}
+	.products img {
+		max-width: 100%;
+	}
+	.products h2 {
+		margin-top: -5em;
+		font-style: italic;
+		font-size: 1em;
+		letter-spacing: .15em;
+	}
+	.products h2 > span {
+		font-family: Gotham;
+		font-style: normal;
+		border-left: 2px solid;
+		margin-left: 1em;
+		padding-left: 1em;
+	}
+	.products h2 > span:before {border-left: 1px solid;}
