@@ -22,6 +22,12 @@
 		font-style: italic;
 	}
 	@font-face {
+		font-family: SentinelBold;
+		src: url(assets/Sentinel-SemiboldItalic.otf);
+		font-style: italic;
+		font-weight: bold;
+	}
+	@font-face {
 		font-family: Gotham;
 		src: url(assets/Gotham-Medium.otf);
 	}
@@ -32,13 +38,15 @@
 		font-size: 16px;
 		color: #000;
 		background: #F5F1E6;
-		/*text-shadow: -2px 2px 8px rgba(0, 0, 0, 0.25);*/
 		text-align: center;
+		margin-top: 6em;
+		-webkit-font-smoothing: antialiased;
 	}
 	a {
-		/*color: white;*/
 		text-decoration: none;
 		cursor: pointer;
+		color: inherit;
+		transition: .25s opacity;
 	}
 	hr {
 		border: none;
@@ -47,44 +55,45 @@
 		margin: 2em auto;
 		position: relative;
 	}
-	ul {
-		padding: 0;
-	}
-	li {
-		display: inline-block;
-	}
-	.content li:before {
-		content: '• ';
-	}
+	* { box-sizing: border-box; }
+	ul { padding: 0; }
+	li { display: block; }
 	.hide,
-	.content,
 	.back {
 		display: none;
 	}
 
-
-
-
+	video {
+		position: fixed;
+		top: 14vh;
+		left: 0;
+		max-width: 100%;
+	}
 
 /* Header */
 
 	header {
-		position: relative;
-		max-width: 80em;
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		top: 0;
 		margin: 2em auto;
 		font-family: "Gotham", sans-serif;
 	}
 	header > .lang {
 		position: absolute;
-		right: 0;
+		right: 2em;
 		top: 0;
 	}
+	.admin-bar header { margin-top: 4em; }
 
-	.menu_btn {
+	a.menu_btn {
+		display: block;
 		border-top: 2px solid;
 		border-bottom: 2px solid;
 		width: 2em;
 		position: absolute;
+		left: 2em;
 	}
 	.menu_btn:after {
 		content: '';
@@ -98,50 +107,260 @@
 		border-left: 1px solid;
 		padding-left: .75em;
 	}
-	.lang img {
-		vertical-align: top;
-	}
+	.lang img { vertical-align: top; }
 
 	nav {
 		position: absolute;
-		top: 3em;
-		line-height: 2em;
+		top: -30em;
+		left: 2em;
+		line-height: 2.5em;
+		-webkit-transition: top .5s;
+		transition: top .5s;
 	}
+	nav.open { top: 4em; }
 	nav a {
 		display: block;
 		text-align: left;
-		color: black;
+		font-size: 0.8em;
+		letter-spacing: .4em;
 	}
-	nav a.current {
-		opacity: .25;
-	}
-	nav a:hover {
-		opacity: .5;
-	}
+	nav a.current { opacity: .25; }
+	nav a:hover,
+	.side a:hover { opacity: .5; }
 
 
 
-/* Products */
+/* Products, Content */
 
-	.products > div {
-		width: 20em;
+	.products > div,
+	.content > div {
+		max-width: 20em;
 		display: inline-block;
 		margin: 0 1em;
+		vertical-align: top;
+		margin-bottom: 4em;
 	}
-	.products img {
-		max-width: 100%;
+	.products,
+	.content {
+		margin: 14vh 2em;
+		padding-top: 4em;
+		overflow: auto;
+	}
+	.content > div {
+		max-width: 27.9em;
+		text-align: left;
+		line-height: 1.5em;
+	}
+	img { max-width: 100%; }
+	.products img.title {
+		display: block;
+		margin: -5em auto 0;
 	}
 	.products h2 {
 		margin-top: -5em;
 		font-style: italic;
 		font-size: 1em;
 		letter-spacing: .15em;
+		font-weight: inherit;
 	}
 	.products h2 > span {
 		font-family: Gotham;
 		font-style: normal;
-		border-left: 2px solid;
-		margin-left: 1em;
+		border-left: .1em solid;
+		margin-left: .65em;
 		padding-left: 1em;
 	}
-	.products h2 > span:before {border-left: 1px solid;}
+	.products h2 > strong {
+		font-family: SentinelBold;
+		letter-spacing: 0;
+	}
+	.products h2 > span:before { border-left: 1px solid; }
+	.products ul { line-height: 1.5em; }
+
+
+
+
+	img.mobile { display: none; }
+
+	.side {
+		position: fixed;
+		width: 10em;
+		text-align: left;
+		left: 2.4em;
+		top: 6.5em;
+		transition: .5s top;
+		font-size: .8em;
+		z-index: 1;
+	}
+	.side a { color: inherit; }
+	.side.open { top: 24em; }
+	.admin-bar .side.open { top: 26em; }
+	.admin-bar .side {
+		top: 8.5em;
+	}
+
+
+/* Linda's Parallax */
+
+	.boutique .wrap { max-width: 65em; }
+	.boutique .txt { margin: 10em 0; }
+	.boutique .noimg .txt { margin: 0 0 6em; }
+
+	.moodboard { transition: .25s padding-top; }
+
+
+	.wrap {
+		margin: 0 auto;
+		overflow: visible;
+		position: relative;
+	}
+
+	.wrap > img { max-width: 100%; }
+
+	.wrap > img:nth-child(even) { float: left; }
+
+	.wrap > img:nth-child(odd) { float: right; }
+
+	.row {
+		display: block;
+		position: relative;
+		width: 100%;}
+
+	.row.full {
+		margin-bottom: 6em;
+		clear: both;
+	}
+	.rtl .img { padding-left: 1em; }
+	.ltr .img { padding-right: 1em; }
+	.row.full > img {
+		max-width: 100%;
+		position: relative;}
+
+	.row.rtl > div { float: right; }
+	.row.med .img { padding: 0 10%; }
+
+	.row:not(.full) > img,
+	.row > div {
+		float: left;
+	}
+
+	.row:not(.full) > .img,
+	.row > .txt {
+		width: 50%;
+	}
+
+	.row.clear {
+		clear: both;
+		overflow: auto;
+		margin-bottom: 6em;
+	}
+	.row > .txt {
+		text-align: center;
+		vertical-align: top;
+		padding: 0 2em;
+	}
+
+	.row .img img {
+		display: block;
+		margin: 0 auto;
+		max-width: 100%;
+	}
+	.row > .img img,
+	.row > .txt {
+		position: relative;
+	}
+	.vector .row {
+		max-width: 70em;
+		margin-right: auto;
+		margin-left: auto;
+		overflow: visible;
+	}
+
+
+/* LP: vector */
+	.vector {
+		top: 0;
+		position: absolute;
+		pointer-events: none;
+		width: 100%;
+		z-index: 1; }
+
+	.vector > div {
+		display: block;
+		position: relative;
+		overflow: hidden; }
+
+	.vector img {
+		position: absolute;
+		max-width: 100%;
+		position: relative; }
+
+	.vector > div:nth-child(even) img{
+		float: left; }
+
+	.vector > div:nth-child(odd) img{
+		float: right; }
+
+
+/* LP: Queries */
+
+	@media screen and (max-width: 800px) {
+		.row > .img, .row > .txt { width: 100%; }
+		.row .img img { max-width: 100%; }
+		video {
+			width: 175%;
+			max-width: initial;
+			left: -37.5%;
+		}
+	}
+
+
+/* Queries */
+
+	@media screen and (max-width: 1320px) {
+		.side + .moodboard { padding-top: 6em; }
+	}
+
+	@media screen and (max-width: 1024px) {
+		.content > div {
+			max-width: initial;
+			width: 50%;
+			float: left;
+			margin: 0;
+		}
+		.content > div:nth-child(2n) { padding-left: 2em; }
+		video { top: 14vh; }
+	}
+	@media screen and (max-width: 600px) {
+		header > .lang { display: none; }
+		.content div.img { margin: 0; }
+		img.desktop { display: none; }
+		img.mobile { display: block; }
+		.content { margin: 14vh 0; }
+		.content > div { width: 100%; }
+		.content > div:nth-child(2n) {
+			padding-right: 2em;
+			margin-top: 1em;
+		}
+		.row:not(.full) .img { width: 100%; }
+		.rtl .img,
+		.ltr .img { padding: 0; }
+
+	}
+
+
+	@media screen and (max-width: 425px) {
+		a.logo { float: right; }
+		a.logo img { width: 80%; }
+		a.menu_btn {
+			width: 1.5em;
+			left: 1em;
+		}
+		.menu_btn:after { margin: .4em 0; }
+		.side, nav { left: 1em; }
+		nav.open { top: 3em; }
+		video {
+			width: 250%;
+			left: -75%;
+		}
+	}

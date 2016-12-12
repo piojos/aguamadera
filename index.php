@@ -1,56 +1,32 @@
 <?php
-/**
- * Template Name: Original Index
- */
 
-	get_header(); ?>
+	/**
+	 * Template Name: Original Index
+	 */
 
-<div class="products">
-	<div>
-		<img src="<?php bloginfo('template_url'); ?>/assets/oronardo.jpg" alt="Oro nardo flask" />
-		<h2>Aguamadera | <span>XINU</span> (no. 2)</h2>
-		<ul>
-			<li>Translucent</li>
-			<li>Fresh</li>
-			<li>Reﬁned</li>
-			<li>Chiaroscuro</li>
-			–
-			<li>Agave</li>
-			<li>Green Lime</li>
-			<li>Guaiac wood</li>
-			<li>Cedarwood</li>
-		</ul>
-	</div>
-	<div>
-		<img src="<?php bloginfo('template_url'); ?>/assets/oronardo.jpg" alt="Oro nardo flask" />
-		<h2>Aguamadera | <span>XINU</span> (no. 2)</h2>
-		<ul>
-			<li>Translucent</li>
-			<li>Fresh</li>
-			<li>Reﬁned</li>
-			<li>Chiaroscuro</li>
-			–
-			<li>Agave</li>
-			<li>Green Lime</li>
-			<li>Guaiac wood</li>
-			<li>Cedarwood</li>
-		</ul>
-	</div>
-	<div>
-		<img src="<?php bloginfo('template_url'); ?>/assets/oronardo.jpg" alt="Oro nardo flask" />
-		<h2>Aguamadera | <span>XINU</span> (no. 2)</h2>
-		<ul>
-			<li>Translucent</li>
-			<li>Fresh</li>
-			<li>Reﬁned</li>
-			<li>Chiaroscuro</li>
-			–
-			<li>Agave</li>
-			<li>Green Lime</li>
-			<li>Guaiac wood</li>
-			<li>Cedarwood</li>
-		</ul>
-	</div>
-</div>
+	get_header();
 
-<?php get_footer(); ?>
+	$mp4 = get_field('vid_mp4');
+	$webm = get_field('vid_webm');
+	$fback = get_field('vid_fallback');
+
+	if($mp4 OR $webm) { ?>
+
+	<video id='bgvid' poster="<?php echo $fback['url']; ?>" playsinline autoplay muted loop ><?php
+		if($mp4) { ?>
+
+		<source src='<?php echo $mp4['url']; ?>' type='video/mp4'><?php
+		}
+		if($webm) { ?>
+
+		<source src='<?php echo $webm['url']; ?>' type='video/webm'><?php
+		} ?>
+	</video><?php
+	}
+
+	// <img src="<?php bloginfo('template_url'); ? >/assets/home_image.jpg" alt="">
+
+
+
+
+	get_footer(); ?>

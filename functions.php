@@ -5,11 +5,8 @@
  */
 	function wpdocs_theme_name_scripts() {
 		wp_enqueue_style( 'normalize', get_template_directory_uri() . '/css/normalize.css');
-		wp_enqueue_style( 'Unslider', get_template_directory_uri() . '/css/unslider.css');
-		wp_enqueue_style( 'Unslider dots', get_template_directory_uri() . '/css/unslider-dots.css');
 		wp_enqueue_style( 'style-name', get_stylesheet_uri() );
 		wp_enqueue_script( 'Modernizr', get_template_directory_uri() . '/js/modernizr-2.8.3.min.js', array('jquery') );
-		wp_enqueue_script( 'Unslider', get_template_directory_uri() . '/js/unslider-min.js' );
 		wp_enqueue_script( 'Magic', get_template_directory_uri() . '/js/magic.js' );
 	}
 	add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
@@ -59,3 +56,23 @@
 	}
 
 	add_action('admin_head', 'hide_menu');
+
+
+
+
+	function poop($opt) {
+
+		$rClass = 'row ';
+		if( $opt && in_array('txt', $opt) ) :
+			if(in_array('rtl', $opt)) {
+				$rClass .= 'rtl';
+			} else {
+				$rClass .= 'ltr';
+			}
+			// $rClass .= 'smn';
+		else :
+			$rClass .= 'full';
+		endif;
+		return $rClass;
+
+	}
