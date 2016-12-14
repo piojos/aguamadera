@@ -56,6 +56,16 @@
 
 			} ?>
 	</div><?php
+
+		$disclaim = get_field('disclaim');
+		if($disclaim) { ?>
+		<div class="disclaimer">
+			–<br>
+			<em>  <?php echo $disclaim; ?></em>
+		</div><?php
+		}
+
+
 		}
 
 
